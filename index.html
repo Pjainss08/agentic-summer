@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agentic Summer — Inner Circle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <video class="hero__bg" autoplay muted loop playsinline src="assets/hero video.mp4"></video>
+    <div class="hero__gradient"></div>
+
+    <nav class="nav">
+      <a class="nav__logo" href="/"><img src="assets/logo-mark.svg" alt="Inner Circle"></a>
+      <ul class="nav__links">
+        <li><a href="#events">Events</a></li>
+        <li><a href="#cities">Partners</a></li>
+        <li><a href="#footer">Register</a></li>
+      </ul>
+    </nav>
+
+    <div class="hero__content">
+      <div class="hero__left">
+        <h1 class="hero__title">The Agentic Summer Begins</h1>
+        <p class="hero__subtitle">Agentic Summer is a 3-month campaign uniting builders and designers to explore and deploy Agentic AI in India.</p>
+        <div class="hero__buttons">
+          <button class="btn-join">
+            <img class="btn-join__gradient" src="assets/join-btn-gradient.png" alt="">
+            <span>Join In Now</span>
+          </button>
+          <button class="btn-explore">Explore Events</button>
+        </div>
+      </div>
+      <div class="hero__right">
+        <p class="hero__supported">Supported by</p>
+        <div class="hero__partners">
+          <img class="partner--logo1" src="assets/partner-logo1.svg" alt="Logo">
+          <img class="partner--antler" src="assets/partner-antler.svg" alt="Antler">
+          <img class="partner--zerion" src="assets/partner-zerion.svg" alt="Zerion">
+          <img class="partner--zerion" src="assets/partner-zerion.svg" alt="Zerion">
+          <img class="partner--coinbase" src="assets/partner-coinbase.svg" alt="Coinbase">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="mission">
+    <div class="polaroid polaroid--1">
+      <img src="assets/polaroid3.jpg" alt="APJ Abdul Kalam">
+      <p class="polaroid__caption">APJ Abdul Kalam and CR Satya carrying a rocket on a bicycle.</p>
+    </div>
+    <div class="polaroid polaroid--2">
+      <img src="assets/polaroid1.jpg" alt="Mountains">
+      <p class="polaroid__caption">somewhere in the mountains</p>
+    </div>
+    <div class="polaroid polaroid--3">
+      <img src="assets/polaroid2.jpg" alt="Rocket man">
+      <p class="polaroid__caption">A Rare image of rocket man of India</p>
+    </div>
+    <div class="polaroid polaroid--4">
+      <img src="assets/polaroid4.jpg" alt="VSSC">
+      <p class="polaroid__caption">Aravamudan with Dr Vikram Sarabhai inspecting a moon rock at VSSC</p>
+    </div>
+    <p class="mission__text">AI is shifting from chatbots to agents that think and act. India has the builders. Agentic Summer is where they move.</p>
+    <button class="btn-outline mission__cta">Explore Events</button>
+  </section>
+
+  <!-- Events -->
+  <section class="events" id="events">
+    <h2 class="events__title">Everything happens here</h2>
+    <div class="events__grid">
+      <article class="event-card">
+        <img class="event-card__img" src="assets/card-talks.jpg" alt="AI Talks — AGNT'Con">
+        <div>
+          <h3 class="event-card__title">AI Talks — AGNT'Con</h3>
+          <p class="event-card__desc">Insightful talks with builders and founders</p>
+          <div class="event-card__tags">
+            <span class="tag">3 Cities</span>
+            <span class="tag">Keynotes</span>
+            <span class="tag">Panels</span>
+          </div>
+        </div>
+      </article>
+      <article class="event-card">
+        <img class="event-card__img" src="assets/card-showcase.jpg" alt="AI Showcase &amp; Clinics">
+        <div>
+          <h3 class="event-card__title">AI Showcase &amp; Clinics</h3>
+          <p class="event-card__desc">Hands-on sessions where you apply AI</p>
+          <div class="event-card__tags">
+            <span class="tag">15 Clinics</span>
+            <span class="tag">Guided Building</span>
+            <span class="tag">Real Use Cases</span>
+          </div>
+        </div>
+      </article>
+      <article class="event-card">
+        <img class="event-card__img" src="assets/card-build.jpg" alt="AI Build — AI &amp; Weekends">
+        <div>
+          <h3 class="event-card__title">AI Build — AI &amp; Weekends</h3>
+          <p class="event-card__desc">Build real AI products with other builders</p>
+          <div class="event-card__tags">
+            <span class="tag">Weekend Sprints</span>
+            <span class="tag">Fast Execution</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Cities -->
+  <section class="cities" id="cities">
+    <h2 class="cities__heading">Across India. All summer.</h2>
+    <button class="btn-outline cities__cta">Join In Now</button>
+    <div class="cities__carousel" id="citiesCarousel">
+      <div class="city-card">
+        <img src="assets/event-weekends2.jpg" alt="AI &amp; Weekends">
+        <div class="city-card__overlay"></div>
+        <div class="city-card__info">
+          <p class="city-card__name">AI &amp; Weekends</p>
+          <p class="city-card__date">February 2025 - Bangalore</p>
+        </div>
+      </div>
+      <div class="city-card">
+        <img src="assets/event-mumbai.jpg" alt="AGNT'Con Mumbai">
+        <div class="city-card__overlay"></div>
+        <div class="city-card__info">
+          <p class="city-card__name">AGNT'Con</p>
+          <p class="city-card__date">March 2025 - Mumbai</p>
+        </div>
+      </div>
+      <div class="city-card">
+        <img src="assets/event-delhi.jpg" alt="AGNT'Con Delhi">
+        <div class="city-card__overlay"></div>
+        <div class="city-card__info">
+          <p class="city-card__name">AGNT'Con</p>
+          <p class="city-card__date">March 2025 - Delhi</p>
+        </div>
+      </div>
+      <div class="city-card">
+        <img src="assets/event-weekends1.jpg" alt="AI &amp; Weekends">
+        <div class="city-card__overlay"></div>
+        <div class="city-card__info">
+          <p class="city-card__name">AI &amp; Weekends</p>
+          <p class="city-card__date">February 2025 - Bangalore</p>
+        </div>
+      </div>
+      <div class="city-card">
+        <img src="assets/event-delhi.jpg" alt="AGNT'Con Delhi">
+        <div class="city-card__overlay"></div>
+        <div class="city-card__info">
+          <p class="city-card__name">AGNT'Con</p>
+          <p class="city-card__date">March 2025 - Delhi</p>
+        </div>
+      </div>
+      <div class="city-card">
+        <img src="assets/event-weekends2.jpg" alt="AI &amp; Weekends">
+        <div class="city-card__overlay"></div>
+        <div class="city-card__info">
+          <p class="city-card__name">AI &amp; Weekends</p>
+          <p class="city-card__date">February 2025 - Bangalore</p>
+        </div>
+      </div>
+      <div class="city-card">
+        <img src="assets/event-mumbai.jpg" alt="AGNT'Con Mumbai">
+        <div class="city-card__overlay"></div>
+        <div class="city-card__info">
+          <p class="city-card__name">AGNT'Con</p>
+          <p class="city-card__date">March 2025 - Mumbai</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <h2 class="faq__title">Frequently Asked Questions</h2>
+    <div class="faq__list">
+      <div class="faq__item">
+        <div class="faq__header">
+          <p class="faq__question">Who is this for?</p>
+          <span class="faq__icon"></span>
+        </div>
+        <div class="faq__answer"><div class="faq__answer-inner"><p>Builders, designers, founders, and anyone excited about Agentic AI. Whether you're a seasoned developer or just getting started, there's a track for you.</p></div></div>
+      </div>
+      <div class="faq__item">
+        <div class="faq__header">
+          <p class="faq__question">Do I need prior AI experience?</p>
+          <span class="faq__icon"></span>
+        </div>
+        <div class="faq__answer"><div class="faq__answer-inner"><p>No. Events range from beginner-friendly workshops to advanced build sprints. You'll find the right level for you.</p></div></div>
+      </div>
+      <div class="faq__item">
+        <div class="faq__header">
+          <p class="faq__question">Are events paid?</p>
+          <span class="faq__icon"></span>
+        </div>
+        <div class="faq__answer"><div class="faq__answer-inner"><p>Most events are free to attend. Some premium workshops may have a nominal fee to cover materials and venue costs.</p></div></div>
+      </div>
+      <div class="faq__item">
+        <div class="faq__header">
+          <p class="faq__question">Can I host or partner?</p>
+          <span class="faq__icon"></span>
+        </div>
+        <div class="faq__answer"><div class="faq__answer-inner"><p>Yes! We're actively looking for community hosts and partners across India. Reach out through the Register section to get started.</p></div></div>
+      </div>
+      <div class="faq__item">
+        <div class="faq__header">
+          <p class="faq__question">What are the benefits of partnering?</p>
+          <span class="faq__icon"></span>
+        </div>
+        <div class="faq__answer"><div class="faq__answer-inner"><p>Partners get brand visibility, access to top AI talent, speaking opportunities, and direct engagement with the builder community.</p></div></div>
+      </div>
+      <div class="faq__item">
+        <div class="faq__header">
+          <p class="faq__question">How do I apply to host an event?</p>
+          <span class="faq__icon"></span>
+        </div>
+        <div class="faq__answer"><div class="faq__answer-inner"><p>Fill out the registration form with your city, venue details, and proposed format. Our team will review and get back to you within a week.</p></div></div>
+      </div>
+      <div class="faq__item">
+        <div class="faq__header">
+          <p class="faq__question">What criteria must I meet to be considered?</p>
+          <span class="faq__icon"></span>
+        </div>
+        <div class="faq__answer"><div class="faq__answer-inner"><p>You need a venue that fits 50+ people, a track record of organizing community events, and genuine enthusiasm for AI and building.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer">
+    <div class="footer__bg">
+      <img src="assets/footer-bg.jpg" alt="">
+    </div>
+    <div class="footer__content">
+      <div class="footer__subscribe">
+        <p class="footer__subscribe-title">Subscribe to Get Updates.</p>
+        <form class="footer__form" onsubmit="return false">
+          <input class="footer__input" type="email" placeholder="innercircle@gmail.com">
+          <button class="footer__submit" type="submit">Subscribe</button>
+        </form>
+      </div>
+      <div class="footer__links-wrap">
+        <div class="footer__col">
+          <p class="footer__col-title">Links</p>
+          <ul class="footer__col-links">
+            <li><a href="#">About Agentic Summer</a></li>
+            <li><a href="#">Partner With Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <p class="footer__col-title">Socials</p>
+          <ul class="footer__col-links">
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Join Community</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>Terms and conditions</span>
+      <span>All rights reserved by innercircle</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script src="http://localhost:4747/script.js"></script>
+</body>
+</html>
