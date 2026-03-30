@@ -807,3 +807,347 @@ body {
   line-height: 20px;
   color: var(--white);
 }
+
+
+/* ═══════════════════════════════════════════
+   Responsive — Tablet (≤1024px)
+   ═══════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .hero__content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
+  .hero__right {
+    align-items: flex-start;
+  }
+
+  .hero__partners {
+    width: auto;
+    justify-content: flex-start;
+  }
+
+  .hero__title {
+    font-size: 52px;
+    max-width: none;
+  }
+
+  .hero__subtitle {
+    font-size: 20px;
+    max-width: none;
+  }
+
+  .mission {
+    padding: 120px 60px;
+  }
+
+  .mission__text {
+    font-size: 44px;
+  }
+
+  .polaroid { display: none; }
+
+  .events__title {
+    font-size: 52px;
+  }
+
+  .events__grid {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .event-card__img {
+    height: 380px;
+  }
+
+  .cities__heading {
+    font-size: 52px;
+  }
+
+  .cities__carousel {
+    height: 400px;
+  }
+
+  .faq {
+    padding: 0 50px 100px;
+  }
+
+  .faq__title {
+    font-size: 44px;
+  }
+
+  .faq__question {
+    font-size: 22px;
+  }
+
+  .footer__content {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .footer__links-wrap {
+    gap: 50px;
+  }
+}
+
+
+/* ═══════════════════════════════════════════
+   Responsive — Mobile (≤768px)
+   ═══════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* Nav */
+  .nav {
+    top: 24px;
+    left: 20px;
+    right: 20px;
+  }
+
+  .nav__links {
+    gap: 20px;
+  }
+
+  .nav__links a {
+    font-size: 16px;
+  }
+
+  /* Hero */
+  .hero {
+    min-height: 100svh;
+  }
+
+  .hero__gradient {
+    height: 70%;
+  }
+
+  .hero__content {
+    bottom: 40px;
+    left: 20px;
+    right: 20px;
+    gap: 30px;
+  }
+
+  .hero__title {
+    font-size: 38px;
+    letter-spacing: -2px;
+  }
+
+  .hero__subtitle {
+    font-size: 16px;
+    margin-top: 12px;
+    letter-spacing: -0.5px;
+  }
+
+  .hero__buttons {
+    margin-top: 24px;
+  }
+
+  .btn-join {
+    width: 120px;
+    height: 40px;
+  }
+
+  .btn-join span {
+    font-size: 16px;
+  }
+
+  .btn-explore {
+    height: 40px;
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  .hero__right {
+    gap: 16px;
+  }
+
+  .hero__supported {
+    font-size: 14px;
+  }
+
+  .hero__partners {
+    gap: 12px 16px;
+  }
+
+  .partner--logo1   { width: 70px; height: 18px; }
+  .partner--antler  { width: 85px; height: 20px; }
+  .partner--zerion  { width: 72px; height: 18px; }
+  .partner--coinbase { width: 85px; height: 16px; }
+
+  /* Mission */
+  .mission {
+    padding: 80px 20px;
+  }
+
+  .mission__text {
+    font-size: 30px;
+    letter-spacing: -1.5px;
+  }
+
+  .btn-outline {
+    font-size: 16px;
+    height: 40px;
+  }
+
+  /* Events */
+  .events {
+    padding: 0 20px;
+  }
+
+  .events__title {
+    font-size: 36px;
+    letter-spacing: -2px;
+    margin-bottom: 32px;
+  }
+
+  .event-card__img {
+    height: 280px;
+  }
+
+  .event-card__title {
+    font-size: 24px;
+  }
+
+  .event-card__desc {
+    font-size: 16px;
+  }
+
+  .tag {
+    font-size: 14px;
+    padding: 4px 8px;
+  }
+
+  /* Cities */
+  .cities {
+    padding: 80px 0;
+  }
+
+  .cities__heading {
+    font-size: 36px;
+    letter-spacing: -2px;
+    padding: 0 20px;
+  }
+
+  .cities__cta {
+    margin: 20px auto 40px;
+    font-size: 16px;
+    height: 40px;
+    width: 120px;
+  }
+
+  .cities__carousel {
+    height: 340px;
+  }
+
+  .city-card__name {
+    font-size: 20px;
+  }
+
+  .city-card__date {
+    font-size: 14px;
+  }
+
+  .city-card__info {
+    bottom: 20px;
+    left: 20px;
+  }
+
+  /* FAQ */
+  .faq {
+    padding: 0 20px 80px;
+  }
+
+  .faq__title {
+    font-size: 32px;
+    letter-spacing: -1.6px;
+    margin-bottom: 32px;
+  }
+
+  .faq__header {
+    padding: 16px 20px;
+  }
+
+  .faq__question {
+    font-size: 18px;
+    letter-spacing: -0.5px;
+  }
+
+  .faq__answer p {
+    font-size: 15px;
+    padding: 0 20px 16px;
+  }
+
+  /* Footer */
+  .footer {
+    height: auto;
+    min-height: 600px;
+  }
+
+  .footer__content {
+    top: 30px;
+    left: 20px;
+    right: 20px;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .footer__subscribe {
+    max-width: none;
+    width: 100%;
+  }
+
+  .footer__subscribe-title {
+    font-size: 22px;
+    max-width: none;
+  }
+
+  .footer__links-wrap {
+    gap: 40px;
+  }
+
+  .footer__bottom {
+    left: 20px;
+    right: 20px;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 12px;
+  }
+}
+
+
+/* ═══════════════════════════════════════════
+   Responsive — Small Mobile (≤420px)
+   ═══════════════════════════════════════════ */
+@media (max-width: 420px) {
+  .hero__title {
+    font-size: 32px;
+  }
+
+  .hero__subtitle {
+    font-size: 15px;
+  }
+
+  .mission__text {
+    font-size: 26px;
+  }
+
+  .events__title {
+    font-size: 30px;
+  }
+
+  .cities__heading {
+    font-size: 30px;
+  }
+
+  .faq__title {
+    font-size: 28px;
+  }
+
+  .faq__question {
+    font-size: 16px;
+  }
+
+  .event-card__img {
+    height: 220px;
+  }
+}

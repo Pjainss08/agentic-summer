@@ -15,13 +15,31 @@
   var autoTimer = null;
   var INTERVAL = 1800;
 
-  // Base card size (center card dimensions)
-  var BASE_W = 337;
-  var BASE_H = 452;
-  var GAP = 25;
+  // Base card size — responsive
+  function getBaseSize() {
+    if (window.innerWidth <= 480) return { w: 220, h: 300, gap: 16 };
+    if (window.innerWidth <= 768) return { w: 260, h: 350, gap: 20 };
+    return { w: 337, h: 452, gap: 25 };
+  }
+
+  var dims = getBaseSize();
+  var BASE_W = dims.w;
+  var BASE_H = dims.h;
+  var GAP = dims.gap;
 
   // Scale per distance from center
   var scales = [1, 0.926, 0.863, 0.77];
+
+  function updateBaseSize() {
+    dims = getBaseSize();
+    BASE_W = dims.w;
+    BASE_H = dims.h;
+    GAP = dims.gap;
+    cards.forEach(function (card) {
+      card.style.width = BASE_W + 'px';
+      card.style.height = BASE_H + 'px';
+    });
+  }
 
   // Set base size on all cards once (no layout animation)
   cards.forEach(function (card) {
@@ -118,7 +136,10 @@
   // Init
   activeIndex = Math.floor(total / 2);
   layout();
-  window.addEventListener('resize', layout);
+  window.addEventListener('resize', function () {
+    updateBaseSize();
+    layout();
+  });
   startAuto();
 })();
 
