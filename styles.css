@@ -176,14 +176,6 @@ body {
   pointer-events: none;
 }
 
-.btn-join__gradient {
-  position: absolute;
-  top: -27px;
-  left: -15.5px;
-  width: 183px;
-  height: 102px;
-}
-
 .btn-join span {
   position: relative;
   font-family: var(--font-primary);
@@ -1069,6 +1061,7 @@ body {
     height: 40px;
   }
 
+
   .btn-join span {
     font-size: 16px;
   }
@@ -1161,20 +1154,24 @@ body {
     height: auto;
     display: flex;
     gap: 14px;
-    overflow: hidden;
+    overflow-x: scroll;
+    overflow-y: hidden;
     padding: 0 20px;
     scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
   }
 
   .cities__carousel::-webkit-scrollbar {
     display: none;
   }
 
-  .city-card {
+  .cities__carousel .city-card {
     flex-shrink: 0;
     width: 240px;
     height: 320px;
     position: relative;
+    opacity: 1;
+    transform: none;
   }
 
   .city-card__name {
