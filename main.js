@@ -9,67 +9,64 @@
   var carousel = document.getElementById('citiesCarousel');
   if (!carousel) return;
 
-  var cards = Array.from(carousel.querySelectorAll('.city-card'));
-  var total = cards.length;
-  var activeIndex = 0;
-  var autoTimer = null;
-  var INTERVAL = 1800;
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Base card size — responsive
-  function getBaseSize() {
-    if (window.innerWidth <= 480) return { w: 220, h: 300, gap: 16 };
-    if (window.innerWidth <= 768) return { w: 260, h: 350, gap: 20 };
-    return { w: 337, h: 452, gap: 25 };
-  }
+  var originalCards = Array.from(carousel.querySelectorAll('.city-card'));
+  var originalCount = originalCards.length;
+  var MOBILE_BP = 768;
 
-  var dims = getBaseSize();
-  var BASE_W = dims.w;
-  var BASE_H = dims.h;
-  var GAP = dims.gap;
-
-  // Scale per distance from center
-  var scales = [1, 0.926, 0.863, 0.77];
-
-  function updateBaseSize() {
-    dims = getBaseSize();
-    BASE_W = dims.w;
-    BASE_H = dims.h;
-    GAP = dims.gap;
-    cards.forEach(function (card) {
-      card.style.width = BASE_W + 'px';
-      card.style.height = BASE_H + 'px';
+  // Clone cards enough times for seamless looping
+  for (var c = 0; c < 4; c++) {
+    originalCards.forEach(function (card) {
+      carousel.appendChild(card.cloneNode(true));
     });
   }
 
-  // Set base size on all cards once (no layout animation)
-  cards.forEach(function (card) {
-    card.style.width = BASE_W + 'px';
-    card.style.height = BASE_H + 'px';
-    card.style.position = 'absolute';
-    card.style.bottom = '0';
-    card.style.left = '50%';
-    card.style.transformOrigin = 'bottom center';
-  });
+  var cards = Array.from(carousel.querySelectorAll('.city-card'));
+  var activeIndex = originalCount * 2;
+  var autoTimer = null;
+  var mobileTimer = null;
+  var INTERVAL = 1800;
 
-  function layout() {
+  // ── Desktop: center-focused staggered ──
+  var BASE_W = 337;
+  var BASE_H = 452;
+  var GAP = 28;
+  var scales = [1, 0.78, 0.6, 0.45];
+
+  function applyDesktopBase() {
+    carousel.style.cssText = '';
+    cards.forEach(function (card) {
+      card.style.cssText = '';
+      card.style.width = BASE_W + 'px';
+      card.style.height = BASE_H + 'px';
+      card.style.position = 'absolute';
+      card.style.bottom = '0';
+      card.style.left = '50%';
+      card.style.transformOrigin = 'bottom center';
+      card.style.borderRadius = '16px';
+      card.style.overflow = 'hidden';
+    });
+  }
+
+  function layout(animate) {
     cards.forEach(function (card, i) {
       var diff = i - activeIndex;
-      if (diff > Math.floor(total / 2)) diff -= total;
-      if (diff < -Math.floor(total / 2)) diff += total;
-
       var absDiff = Math.abs(diff);
 
-      if (absDiff > 3) {
+      if (absDiff > 2) {
+        // Position hidden cards off-screen on their correct side
+        // so they enter from the edge, not the center
+        var hideOffset = (BASE_W * 1) / 2 + GAP + (BASE_W * 0.78) / 2 + GAP + (BASE_W * 0.6) / 2 + GAP + BASE_W;
+        if (diff < 0) hideOffset = -hideOffset;
         card.style.opacity = '0';
         card.style.pointerEvents = 'none';
-        card.style.transform = 'translateX(-50%) scale(0.7)';
+        card.style.transform = 'translateX(calc(-50% + ' + hideOffset + 'px)) scale(0.45)';
         card.style.zIndex = '0';
         return;
       }
 
       var s = scales[Math.min(absDiff, scales.length - 1)];
-
-      // Calculate horizontal offset from center
       var offsetX = 0;
       for (var j = 0; j < absDiff; j++) {
         var sj = scales[Math.min(j, scales.length - 1)];
@@ -78,150 +75,185 @@
       }
       if (diff < 0) offsetX = -offsetX;
 
+      if (animate === false) {
+        card.style.transition = 'none';
+      } else {
+        card.style.transition = 'transform 0.5s cubic-bezier(0.4,0,0.2,1), opacity 0.5s cubic-bezier(0.4,0,0.2,1)';
+      }
+
       card.style.transform = 'translateX(calc(-50% + ' + offsetX + 'px)) scale(' + s + ')';
-      card.style.opacity = absDiff <= 2 ? '1' : '0.5';
+      card.style.opacity = absDiff <= 2 ? '1' : '0';
       card.style.pointerEvents = 'auto';
       card.style.zIndex = String(10 - absDiff);
     });
   }
 
-  function goTo(index) {
-    activeIndex = ((index % total) + total) % total;
-    layout();
+  function normalizeIndex() {
+    // Reset when we drift too far — happens invisibly since
+    // cloned cards at the reset position look identical
+    if (activeIndex >= originalCount * 3) {
+      activeIndex -= originalCount;
+      layout(false);
+      void carousel.offsetHeight;
+    } else if (activeIndex < originalCount) {
+      activeIndex += originalCount;
+      layout(false);
+      void carousel.offsetHeight;
+    }
   }
 
   function next() {
-    goTo(activeIndex + 1);
+    activeIndex++;
+    layout(true);
+    setTimeout(normalizeIndex, 550);
   }
 
-  function startAuto() {
-    stopAuto();
+  function startDesktopAuto() {
+    stopAll();
     autoTimer = setInterval(next, INTERVAL);
   }
 
-  function stopAuto() {
-    if (autoTimer) {
-      clearInterval(autoTimer);
-      autoTimer = null;
+  // ── Mobile: simple horizontal scroll ──
+  var SPEED = 0.8;
+
+  function applyMobileBase() {
+    cards.forEach(function (card) {
+      card.style.cssText = '';
+    });
+    carousel.style.cssText = '';
+  }
+
+  function startMobileScroll() {
+    stopAll();
+    mobileTimer = setInterval(function () {
+      carousel.scrollLeft += SPEED;
+      var halfScroll = carousel.scrollWidth / 2;
+      if (carousel.scrollLeft >= halfScroll) {
+        carousel.scrollLeft -= halfScroll;
+      }
+    }, 16);
+  }
+
+  // ── Shared ──
+  function stopAll() {
+    if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+    if (mobileTimer) { clearInterval(mobileTimer); mobileTimer = null; }
+  }
+
+  function isMobile() {
+    return window.innerWidth <= MOBILE_BP;
+  }
+
+  function init() {
+    stopAll();
+
+    // Respect prefers-reduced-motion — show static layout, no auto-scroll
+    if (prefersReducedMotion) {
+      if (isMobile()) {
+        applyMobileBase();
+      } else {
+        applyDesktopBase();
+        activeIndex = originalCount * 2;
+        layout(false);
+      }
+      return;
+    }
+
+    if (isMobile()) {
+      applyMobileBase();
+      startMobileScroll();
+    } else {
+      applyDesktopBase();
+      activeIndex = originalCount * 2;
+      layout(false);
+      startDesktopAuto();
     }
   }
 
-  // Pause on hover
-  carousel.addEventListener('mouseenter', stopAuto);
-  carousel.addEventListener('mouseleave', startAuto);
-
-  // Click left/right to navigate
-  carousel.addEventListener('click', function (e) {
-    var rect = carousel.getBoundingClientRect();
-    var clickX = e.clientX - rect.left;
-    if (clickX < rect.width / 2) {
-      goTo(activeIndex - 1);
-    } else {
-      next();
-    }
-    stopAuto();
-    startAuto();
+  // Pause/resume
+  carousel.addEventListener('mouseenter', stopAll);
+  carousel.addEventListener('mouseleave', function () {
+    if (isMobile()) startMobileScroll();
+    else startDesktopAuto();
+  });
+  carousel.addEventListener('touchstart', stopAll);
+  carousel.addEventListener('touchend', function () {
+    setTimeout(function () {
+      if (isMobile()) startMobileScroll();
+    }, 2000);
   });
 
-  // Pause when off-screen
+  // Off-screen pause
   var observer = new IntersectionObserver(function (entries) {
     if (entries[0].isIntersecting) {
-      startAuto();
+      if (isMobile()) startMobileScroll();
+      else startDesktopAuto();
     } else {
-      stopAuto();
+      stopAll();
     }
   }, { threshold: 0.1 });
   observer.observe(carousel);
 
-  // Init
-  activeIndex = Math.floor(total / 2);
-  layout();
+  // Init + resize
+  init();
+  var resizeTimeout;
   window.addEventListener('resize', function () {
-    updateBaseSize();
-    layout();
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(init, 200);
   });
-  startAuto();
 })();
 
 
 // ── Polaroids — Staggered Reveal ──
 (function () {
   'use strict';
-
   var polaroids = document.querySelectorAll('.polaroid');
   if (!polaroids.length) return;
 
   var observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (!entry.isIntersecting) return;
-
       var el = entry.target;
       var index = Array.prototype.indexOf.call(polaroids, el);
-      var delay = index * 200;
-
-      setTimeout(function () {
-        el.classList.add('is-visible');
-      }, delay);
-
+      setTimeout(function () { el.classList.add('is-visible'); }, index * 200);
       observer.unobserve(el);
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-  polaroids.forEach(function (p) {
-    observer.observe(p);
-  });
+  polaroids.forEach(function (p) { observer.observe(p); });
 })();
 
 
 // ── Event Cards — Staggered Reveal ──
 (function () {
   'use strict';
-
   var cards = document.querySelectorAll('.event-card');
   if (!cards.length) return;
 
   var observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (!entry.isIntersecting) return;
-
       var card = entry.target;
       var index = Array.prototype.indexOf.call(cards, card);
-      var delay = index * 150;
-
-      setTimeout(function () {
-        card.classList.add('is-visible');
-      }, delay);
-
+      setTimeout(function () { card.classList.add('is-visible'); }, index * 150);
       observer.unobserve(card);
     });
   }, { threshold: 0.15 });
 
-  cards.forEach(function (card) {
-    observer.observe(card);
-  });
+  cards.forEach(function (card) { observer.observe(card); });
 })();
 
 
 // ── FAQ Accordion ──
 (function () {
   'use strict';
-
   var items = document.querySelectorAll('.faq__item');
 
   items.forEach(function (item) {
-    var header = item.querySelector('.faq__header');
-    header.addEventListener('click', function () {
+    item.querySelector('.faq__header').addEventListener('click', function () {
       var isOpen = item.classList.contains('is-open');
-
-      // Close all others
-      items.forEach(function (other) {
-        other.classList.remove('is-open');
-      });
-
-      // Toggle clicked
-      if (!isOpen) {
-        item.classList.add('is-open');
-      }
+      items.forEach(function (o) { o.classList.remove('is-open'); });
+      if (!isOpen) item.classList.add('is-open');
     });
   });
 })();
