@@ -48,7 +48,7 @@ body {
   right: 50px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   z-index: 10;
 }
 
@@ -262,22 +262,20 @@ body {
 
 .hero__partners {
   display: flex;
-  width: 438px;
-  justify-content: flex-end;
-  align-items: flex-start;
-  align-content: flex-start;
-  gap: 20px 23.514px;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
 }
 
 .hero__partners img {
   display: block;
+  height: 28px;
+  width: auto;
+  object-fit: contain;
 }
 
-.partner--logo1   { width: 100px; height: 25px; }
-.partner--antler  { width: 121px; height: 28px; }
-.partner--zerion  { width: 103px; height: 25px; }
-.partner--coinbase { width: 121px; height: 22px; }
+.hero__partners .partner--aiw {
+  height: 42px;
+}
 
 
 /* ── Mission ── */
@@ -385,9 +383,86 @@ body {
 }
 
 
+/* ── Polaroid Stack (mobile only) ── */
+.polaroid-stack {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .mission {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Scroll-lock wrapper: tall enough for scroll-driven stacking */
+  .polaroid-stack {
+    display: block;
+    height: 160vh;
+    position: relative;
+  }
+
+  .polaroid-stack__sticky {
+    position: sticky;
+    top: 0;
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .polaroid-stack__pile {
+    position: relative;
+    width: 50vw;
+    max-width: 200px;
+    aspect-ratio: 3 / 4;
+  }
+
+  .polaroid-stack__card {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    padding: 7px 7px 10px;
+    border-radius: 5px;
+    background: var(--white);
+    box-shadow: 0 4px 21px rgba(0, 0, 0, 0.11);
+    opacity: 0;
+    transform: translateY(100%) rotate(var(--rotation, 0deg));
+    transition: transform 0.4s ease-out, opacity 0.3s ease-out;
+  }
+
+  .polaroid-stack__card.is-stacked {
+    opacity: 1;
+    transform: translateY(0) rotate(var(--rotation, 0deg));
+  }
+
+  .polaroid-stack__card img {
+    width: 100%;
+    flex: 1;
+    object-fit: cover;
+    border-radius: 3px;
+  }
+
+  .polaroid-stack__card .polaroid__caption {
+    font-family: var(--font-handwritten);
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: -0.36px;
+    line-height: 13px;
+    color: var(--black);
+    text-align: center;
+  }
+}
+
+
+
 /* ── Events ── */
 .events {
-  padding: 0 50px;
+  padding: 50px 50px;
   max-width: 1440px;
   margin: 0 auto;
 }
@@ -429,11 +504,21 @@ body {
   }
 }
 
+.event-card__img-wrap {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
 .event-card__img {
   width: 100%;
   height: 536px;
-  border-radius: var(--radius-lg);
+  display: block;
   object-fit: cover;
+  transition: transform 0.3s ease-out;
+}
+
+.event-card:hover .event-card__img {
+  transform: scale(1.04);
 }
 
 .event-card__title {
@@ -472,9 +557,52 @@ body {
 }
 
 
+/* ── Logo Marquee ── */
+.marquee {
+  padding: 80px 0;
+  overflow: hidden;
+}
+
+.marquee__track {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  width: max-content;
+  animation: marquee-scroll 20s linear infinite;
+}
+
+.marquee__track img {
+  height: 28px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.5;
+  filter: grayscale(1) brightness(0.3);
+}
+
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@media (max-width: 768px) {
+  .marquee {
+    padding: 50px 0;
+  }
+
+  .marquee__track {
+    gap: 40px;
+    animation-duration: 15s;
+  }
+
+  .marquee__track img {
+    height: 22px;
+  }
+}
+
+
 /* ── Cities Carousel ── */
 .cities {
-  padding: 140px 0;
+  padding: 60px 0;
   max-width: 1440px;
   margin: 0 auto;
   overflow: hidden;

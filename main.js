@@ -204,6 +204,42 @@
 })();
 
 
+// ── Polaroid Stack — Scroll-locked stacking (mobile/tablet) ──
+(function () {
+  'use strict';
+
+  var stack = document.getElementById('polaroidStack');
+  if (!stack) return;
+
+  var cards = Array.from(stack.querySelectorAll('.polaroid-stack__card'));
+  if (!cards.length) return;
+
+  function onScroll() {
+    if (window.innerWidth > 768) return;
+
+    var rect = stack.getBoundingClientRect();
+    // How far we've scrolled into the tall container
+    // rect.top starts positive, goes negative as we scroll
+    var scrollableHeight = stack.offsetHeight - window.innerHeight;
+    var progress = -rect.top / scrollableHeight;
+    progress = Math.max(0, Math.min(1, progress));
+
+    // Distribute cards evenly across 0-0.8 of scroll progress
+    cards.forEach(function (card, i) {
+      var threshold = (i + 1) / (cards.length + 1) * 0.8;
+      if (progress >= threshold) {
+        card.classList.add('is-stacked');
+      } else {
+        card.classList.remove('is-stacked');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+
 // ── Polaroids — Staggered Reveal ──
 (function () {
   'use strict';
