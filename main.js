@@ -117,10 +117,18 @@
   var SPEED = 0.8;
 
   function applyMobileBase() {
+    carousel.style.cssText = '';
     cards.forEach(function (card) {
       card.style.cssText = '';
+      card.style.flexShrink = '0';
+      card.style.position = 'relative';
+      card.style.opacity = '1';
+      card.style.transform = 'none';
+      card.style.width = '240px';
+      card.style.height = '320px';
     });
-    carousel.style.cssText = '';
+    // Ensure scroll starts at beginning
+    carousel.scrollLeft = 0;
   }
 
   function startMobileScroll() {
