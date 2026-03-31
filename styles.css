@@ -391,7 +391,7 @@ body {
   /* Scroll-lock wrapper: tall enough for scroll-driven stacking */
   .polaroid-stack {
     display: block;
-    height: 120vh;
+    height: 250vh;
     position: relative;
   }
 
@@ -423,13 +423,7 @@ body {
     background: var(--white);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
     opacity: 0;
-    transform: translateY(100%) rotate(var(--rotation, 0deg));
-    transition: transform 0.4s ease-out, opacity 0.3s ease-out;
-  }
-
-  .polaroid-stack__card.is-stacked {
-    opacity: 1;
-    transform: translateY(0) rotate(var(--rotation, 0deg));
+    transform: translateY(120%) rotate(var(--rotation, 0deg));
   }
 
   .polaroid-stack__card img {

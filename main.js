@@ -232,15 +232,18 @@
     var progress = -rect.top / scrollableHeight;
     progress = Math.max(0, Math.min(1, progress));
 
-    // Each card needs ~25% of scroll to trigger
-    // Card 1: 0.15, Card 2: 0.40, Card 3: 0.65, Card 4: 0.90
+    // Each card slides in based on scroll progress
+    // Maps scroll to a 0-1 range per card for continuous movement
     cards.forEach(function (card, i) {
-      var threshold = 0.15 + (i * 0.25);
-      if (progress >= threshold) {
-        card.classList.add('is-stacked');
-      } else {
-        card.classList.remove('is-stacked');
-      }
+      var start = 0.1 + (i * 0.22);
+      var end = start + 0.18;
+      var cardProgress = (progress - start) / (end - start);
+      cardProgress = Math.max(0, Math.min(1, cardProgress));
+
+      // Slide from 120% below to 0
+      var y = (1 - cardProgress) * 120;
+      card.style.opacity = cardProgress > 0 ? '1' : '0';
+      card.style.transform = 'translateY(' + y + '%) rotate(var(--rotation, 0deg))';
     });
   }
 
