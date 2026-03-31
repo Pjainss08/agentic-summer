@@ -391,7 +391,7 @@ body {
   /* Scroll-lock wrapper: tall enough for scroll-driven stacking */
   .polaroid-stack {
     display: block;
-    height: 160vh;
+    height: 120vh;
     position: relative;
   }
 
@@ -406,22 +406,22 @@ body {
 
   .polaroid-stack__pile {
     position: relative;
-    width: 50vw;
-    max-width: 200px;
-    aspect-ratio: 3 / 4;
+    width: 260px;
+    height: 330px;
   }
 
   .polaroid-stack__card {
     position: absolute;
-    inset: 0;
+    width: 260px;
+    height: 330px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 9px;
-    padding: 7px 7px 10px;
+    gap: 8px;
+    padding: 8px 8px 12px;
     border-radius: 5px;
     background: var(--white);
-    box-shadow: 0 4px 21px rgba(0, 0, 0, 0.11);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
     opacity: 0;
     transform: translateY(100%) rotate(var(--rotation, 0deg));
     transition: transform 0.4s ease-out, opacity 0.3s ease-out;
@@ -434,7 +434,7 @@ body {
 
   .polaroid-stack__card img {
     width: 100%;
-    flex: 1;
+    height: 270px;
     object-fit: cover;
     border-radius: 3px;
   }
@@ -443,10 +443,11 @@ body {
     font-family: var(--font-handwritten);
     font-size: 11px;
     font-weight: bold;
-    letter-spacing: -0.36px;
+    letter-spacing: -0.3px;
     line-height: 13px;
     color: var(--black);
     text-align: center;
+    max-width: 230px;
   }
 }
 
@@ -564,11 +565,13 @@ body {
 }
 
 .marquee__track img {
-  height: 28px;
+  height: 32px;
   width: auto;
+  max-height: 32px;
   object-fit: contain;
   opacity: 0.5;
   filter: grayscale(1) brightness(0.3);
+  flex-shrink: 0;
 }
 
 @keyframes marquee-scroll {

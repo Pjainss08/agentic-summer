@@ -232,9 +232,10 @@
     var progress = -rect.top / scrollableHeight;
     progress = Math.max(0, Math.min(1, progress));
 
-    // Distribute cards evenly across 0-0.8 of scroll progress
+    // Each card needs ~25% of scroll to trigger
+    // Card 1: 0.15, Card 2: 0.40, Card 3: 0.65, Card 4: 0.90
     cards.forEach(function (card, i) {
-      var threshold = (i + 1) / (cards.length + 1) * 0.8;
+      var threshold = 0.15 + (i * 0.25);
       if (progress >= threshold) {
         card.classList.add('is-stacked');
       } else {
