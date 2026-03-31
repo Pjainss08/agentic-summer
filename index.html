@@ -12,6 +12,8 @@
 </head>
 <body>
 
+  <div class="main-content">
+
   <!-- Hero -->
   <section class="hero">
     <video class="hero__bg" autoplay muted loop playsinline src="assets/hero video.mp4"></video>
@@ -46,51 +48,22 @@
     </div>
   </section>
 
-  <!-- Mission -->
+  <!-- Mission (old — commented out)
   <section class="mission">
-    <div class="polaroid polaroid--1">
-      <img src="assets/polaroid3.jpg" alt="APJ Abdul Kalam">
-      <p class="polaroid__caption">APJ Abdul Kalam and CR Satya carrying a rocket on a bicycle.</p>
-    </div>
-    <div class="polaroid polaroid--2">
-      <img src="assets/polaroid1.jpg" alt="Mountains">
-      <p class="polaroid__caption">Assembilng the first rocket</p>
-    </div>
-    <div class="polaroid polaroid--3">
-      <img src="assets/polaroid2.jpg" alt="Rocket man">
-      <p class="polaroid__caption">A Rare image of rocket man of India</p>
-    </div>
-    <div class="polaroid polaroid--4">
-      <img src="assets/polaroid4.jpg" alt="VSSC">
-      <p class="polaroid__caption">Aravamudan with Dr Vikram Sarabhai inspecting a moon rock at VSSC</p>
-    </div>
+    ...polaroids and stack...
+  </section>
+  -->
 
-    <!-- Mobile: scroll-locked stacking polaroids -->
-    <div class="polaroid-stack" id="polaroidStack">
-      <div class="polaroid-stack__sticky">
-        <div class="polaroid-stack__pile">
-          <div class="polaroid-stack__card" style="--rotation: -5.946deg">
-            <img src="assets/polaroid3.jpg" alt="APJ Abdul Kalam">
-            <p class="polaroid__caption">APJ Abdul Kalam and CR Satya carrying a rocket on a bicycle.</p>
-          </div>
-          <div class="polaroid-stack__card" style="--rotation: 9.59deg">
-            <img src="assets/polaroid1.jpg" alt="Mountains">
-            <p class="polaroid__caption">Assembilng the first rocket</p>
-          </div>
-          <div class="polaroid-stack__card" style="--rotation: 12.7deg">
-            <img src="assets/polaroid2.jpg" alt="Rocket man">
-            <p class="polaroid__caption">A Rare image of rocket man of India</p>
-          </div>
-          <div class="polaroid-stack__card" style="--rotation: -5.946deg">
-            <img src="assets/polaroid4.jpg" alt="VSSC">
-            <p class="polaroid__caption">Aravamudan with Dr Vikram Sarabhai inspecting a moon rock at VSSC</p>
-          </div>
-        </div>
-      </div>
+  <!-- Mission — Inline Image Typography -->
+  <section class="mission-v2">
+    <div class="mission-v2__text">
+      <span class="reveal-line">AI <img class="mission-v2__tv" src="assets/tv missii.png" alt=""> is moving from chatbots to agents, <img class="mission-v2__img-rounded" src="assets/inline-img1.jpg" alt=""></span>
+      <span class="reveal-line">systems that think, act, and execute. India &#x1F1EE;&#x1F1F3;</span>
+      <span class="reveal-line">has always <span class="mission-v2__avatars"><img src="assets/avatar1.jpg" alt=""><img src="assets/avatar2.jpg" alt=""><img src="assets/avatar3.jpg" alt=""></span> adapted fast&#x1F4A5; and built</span>
+      <span class="reveal-line">at scale. Now it's time to lead. Agentic</span>
+      <span class="reveal-line">Summer &#x1F33B; brings the awareness, <img class="mission-v2__img-rect" src="assets/inline-img2.jpg" alt=""></span>
+      <span class="reveal-line">access, and action &#x1F680; to make it happen.</span>
     </div>
-
-    <p class="mission__text">AI is shifting from chatbots to agents that think and act. India has the builders. Agentic Summer is where they move.</p>
-    <button class="btn-outline mission__cta">Explore Events</button>
   </section>
 
   <!-- Events -->
@@ -215,6 +188,14 @@
         </div>
       </div>
     </div>
+    <div class="cities__arrows">
+      <button class="cities__arrow cities__arrow--prev" id="carouselPrev" aria-label="Previous slide">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="cities__arrow cities__arrow--next" id="carouselNext" aria-label="Next slide">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
   </section>
 
   <!-- FAQ -->
@@ -272,6 +253,8 @@
       </div>
     </div>
   </section>
+
+  </div><!-- /.main-content -->
 
   <!-- Footer -->
   <footer class="footer" id="footer">

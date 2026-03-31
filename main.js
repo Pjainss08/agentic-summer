@@ -202,6 +202,38 @@
   }, { threshold: 0.1 });
   observer.observe(carousel);
 
+  // Arrow buttons
+  var prevBtn = document.getElementById('carouselPrev');
+  var nextBtn = document.getElementById('carouselNext');
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', function () {
+      stopAll();
+      if (isMobile()) {
+        carousel.scrollBy({ left: -260, behavior: 'smooth' });
+        setTimeout(startMobileScroll, 3000);
+      } else {
+        activeIndex--;
+        layout(true);
+        setTimeout(normalizeIndex, 550);
+        setTimeout(startDesktopAuto, 3000);
+      }
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', function () {
+      stopAll();
+      if (isMobile()) {
+        carousel.scrollBy({ left: 260, behavior: 'smooth' });
+        setTimeout(startMobileScroll, 3000);
+      } else {
+        next();
+        setTimeout(startDesktopAuto, 3000);
+      }
+    });
+  }
+
   // Init + resize
   init();
   var resizeTimeout;
@@ -249,6 +281,31 @@
 
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+})();
+
+
+// ── Reveal Lines — Scroll-triggered line-by-line ──
+(function () {
+  'use strict';
+
+  var lines = document.querySelectorAll('.reveal-line');
+  if (!lines.length) return;
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var line = entry.target;
+      var index = Array.prototype.indexOf.call(lines, line);
+      setTimeout(function () {
+        line.classList.add('is-visible');
+      }, index * 150);
+      observer.unobserve(line);
+    });
+  }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
+
+  lines.forEach(function (line) {
+    observer.observe(line);
+  });
 })();
 
 
