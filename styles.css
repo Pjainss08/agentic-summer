@@ -1268,20 +1268,21 @@ body {
 
 .footer__presented {
   position: absolute;
-  top: 50px;
+  top: 50%;
   left: 0;
   right: 0;
+  transform: translateY(-50%);
   text-align: center;
   font-size: 22px;
   font-weight: 500;
   letter-spacing: -0.8px;
   line-height: 1.2;
-  color: var(--white-60);
+  color: rgba(0, 0, 0, 0.5);
   z-index: 2;
 }
 
 .footer__presented a {
-  color: var(--white);
+  color: var(--black);
   text-decoration: none;
   transition: opacity 0.2s;
 }
