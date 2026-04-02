@@ -2,118 +2,29 @@
 // Agentic Summer — Inner Circle
 // ═══════════════════════════════════════════
 
-// ── Cities Carousel — Drag to scroll ──
+// ── Cities Tabs — Filter by category ──
 (function () {
   'use strict';
 
-  var carousel = document.getElementById('citiesCarousel');
-  if (!carousel) return;
+  var tabs = document.querySelectorAll('.cities__tab');
+  var cards = document.querySelectorAll('#citiesGrid .city-card');
+  if (!tabs.length) return;
 
-  // Clone cards for seamless loop
-  var originalCards = Array.from(carousel.querySelectorAll('.city-card'));
-  originalCards.forEach(function (card) {
-    carousel.appendChild(card.cloneNode(true));
-  });
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      tabs.forEach(function (t) { t.classList.remove('cities__tab--active'); });
+      tab.classList.add('cities__tab--active');
 
-  // Auto-scroll
-  var scrollTimer = null;
-  var SPEED = window.innerWidth <= 768 ? 0.4 : 0.8;
-
-  function startScroll() {
-    stopScroll();
-    scrollTimer = setInterval(function () {
-      carousel.scrollLeft += SPEED;
-      var halfScroll = carousel.scrollWidth / 2;
-      if (carousel.scrollLeft >= halfScroll) {
-        carousel.scrollLeft -= halfScroll;
-      }
-    }, 16);
-  }
-
-  function stopScroll() {
-    if (scrollTimer) {
-      clearInterval(scrollTimer);
-      scrollTimer = null;
-    }
-  }
-
-  // Drag to scroll
-  var isDragging = false;
-  var startX = 0;
-  var scrollStart = 0;
-  var hasDragged = false;
-
-  carousel.addEventListener('mousedown', function (e) {
-    isDragging = true;
-    hasDragged = false;
-    startX = e.clientX;
-    scrollStart = carousel.scrollLeft;
-    carousel.style.cursor = 'grabbing';
-    stopScroll();
-  });
-
-  window.addEventListener('mousemove', function (e) {
-    if (!isDragging) return;
-    var diff = e.clientX - startX;
-    if (Math.abs(diff) > 5) hasDragged = true;
-    carousel.scrollLeft = scrollStart - diff;
-  });
-
-  window.addEventListener('mouseup', function () {
-    if (!isDragging) return;
-    isDragging = false;
-    carousel.style.cursor = 'grab';
-    startScroll();
-  });
-
-  carousel.addEventListener('click', function (e) {
-    if (hasDragged) {
-      e.preventDefault();
-      e.stopPropagation();
-      hasDragged = false;
-    }
-  }, true);
-
-  // Pause on hover
-  carousel.addEventListener('mouseenter', stopScroll);
-  carousel.addEventListener('mouseleave', function () {
-    if (!isDragging) startScroll();
-  });
-
-  // Touch
-  carousel.addEventListener('touchstart', stopScroll);
-  carousel.addEventListener('touchend', function () {
-    setTimeout(startScroll, 2000);
-  });
-
-  // Off-screen pause
-  var observer = new IntersectionObserver(function (entries) {
-    if (entries[0].isIntersecting) startScroll();
-    else stopScroll();
-  }, { threshold: 0.1 });
-  observer.observe(carousel);
-
-  // Arrow buttons
-  var prevBtn = document.getElementById('carouselPrev');
-  var nextBtn = document.getElementById('carouselNext');
-
-  if (prevBtn) {
-    prevBtn.addEventListener('click', function () {
-      stopScroll();
-      carousel.scrollBy({ left: -340, behavior: 'smooth' });
-      setTimeout(startScroll, 2000);
+      var filter = tab.getAttribute('data-tab');
+      cards.forEach(function (card) {
+        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+          card.classList.remove('city-card--hidden');
+        } else {
+          card.classList.add('city-card--hidden');
+        }
+      });
     });
-  }
-
-  if (nextBtn) {
-    nextBtn.addEventListener('click', function () {
-      stopScroll();
-      carousel.scrollBy({ left: 340, behavior: 'smooth' });
-      setTimeout(startScroll, 2000);
-    });
-  }
-
-  startScroll();
+  });
 })();
 
 

@@ -824,7 +824,6 @@ body {
   padding: 100px 0;
   max-width: 1440px;
   margin: 0 auto;
-  overflow: hidden;
 }
 
 .cities__heading {
@@ -835,34 +834,49 @@ body {
   text-align: center;
 }
 
-.cities__cta {
-  width: 140px;
-  margin: 30px auto 60px;
-}
-
-.cities__carousel {
+.cities__tabs {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 40px;
+}
+
+.cities__tab {
+  height: 36px;
+  padding: 0 18px;
+  border-radius: 100px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: transparent;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.3px;
+  color: var(--black);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.cities__tab--active {
+  background: var(--black);
+  border-color: var(--black);
+  color: var(--white);
+}
+
+.cities__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  overflow-x: scroll;
-  overflow-y: hidden;
   padding: 0 50px;
-  margin-top: 50px;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-  cursor: grab;
-}
-
-.cities__carousel:active {
-  cursor: grabbing;
-}
-
-.cities__carousel::-webkit-scrollbar {
-  display: none;
+  margin-top: 40px;
 }
 
 .city-card {
-  flex-shrink: 0;
-  width: 320px;
+  width: 100%;
+}
+
+.city-card--hidden {
+  display: none;
 }
 
 .city-card__mobile-register {
@@ -913,13 +927,6 @@ body {
   opacity: 1;
 }
 
-.city-card--blurred .city-card__img img {
-  filter: blur(4px);
-}
-
-.city-card--blurred .city-card__img {
-  opacity: 0.5;
-}
 
 .city-card__register {
   display: flex;
@@ -1490,21 +1497,21 @@ body {
     padding: 0 20px;
   }
 
-  .cities__cta {
-    margin: 20px auto 40px;
-    font-size: 16px;
-    height: 40px;
-    width: 120px;
+  .cities__tabs {
+    gap: 6px;
+    flex-wrap: wrap;
+    padding: 0 20px;
   }
 
-  .cities__carousel {
+  .cities__grid {
+    grid-template-columns: repeat(2, 1fr);
     padding: 0 20px;
     gap: 14px;
     margin-top: 30px;
   }
 
   .city-card {
-    width: 240px;
+    width: 100%;
   }
 
   .city-card__hover-overlay {

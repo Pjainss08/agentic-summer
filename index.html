@@ -70,6 +70,7 @@
   -->
 
   <!-- Mission — Inline Image Typography -->
+  <!-- mission-v2 commented out
   <section class="mission-v2">
     <div class="mission-v2__text">
       <span class="reveal-line">AI <img class="mission-v2__tv" src="assets/tv missii.png" alt=""> is moving from chatbots to agents, <img class="mission-v2__img-rounded" src="assets/inline-img1.jpg" alt=""></span>
@@ -80,6 +81,7 @@
       <span class="reveal-line">access, and action &#x1F680; to make it happen.</span>
     </div>
   </section>
+  -->
 
   <!-- Events (old — commented out)
   <section class="events" id="events">
@@ -107,8 +109,14 @@
   <!-- Cities -->
   <section class="cities" id="cities">
     <h2 class="cities__heading">Across India. All summer.</h2>
-    <div class="cities__carousel" id="citiesCarousel">
-      <div class="city-card city-card--active">
+    <div class="cities__tabs">
+      <button class="cities__tab cities__tab--active" data-tab="all">All Events</button>
+      <button class="cities__tab" data-tab="buildathons">Buildathons</button>
+      <button class="cities__tab" data-tab="bootcamps">Bootcamps</button>
+      <button class="cities__tab" data-tab="agntcons">AGNT'Cons</button>
+    </div>
+    <div class="cities__grid" id="citiesGrid">
+      <div class="city-card city-card--active" data-category="bootcamps">
         <div class="city-card__img">
           <img src="assets/event-weekends2.jpg" alt="AI &amp; Weekends">
           <div class="city-card__overlay"></div>
@@ -124,7 +132,7 @@
           <a href="https://luma.com/event/evt-aXxPATTbEDDlwBa" class="luma-checkout--button" data-luma-action="checkout" data-luma-event-id="evt-aXxPATTbEDDlwBa">Register</a>
         </div>
       </div>
-      <div class="city-card city-card--blurred">
+      <div class="city-card" data-category="agntcons">
         <div class="city-card__img">
           <img src="assets/event-mumbai.jpg" alt="AGNT'Con Mumbai">
           <div class="city-card__overlay"></div>
@@ -134,7 +142,7 @@
           </div>
         </div>
       </div>
-      <div class="city-card city-card--blurred">
+      <div class="city-card" data-category="agntcons">
         <div class="city-card__img">
           <img src="assets/event-delhi.jpg" alt="AGNT'Con Delhi">
           <div class="city-card__overlay"></div>
@@ -144,7 +152,7 @@
           </div>
         </div>
       </div>
-      <div class="city-card city-card--blurred">
+      <div class="city-card" data-category="buildathons">
         <div class="city-card__img">
           <img src="assets/event-weekends1.jpg" alt="AI &amp; Weekends">
           <div class="city-card__overlay"></div>
@@ -154,7 +162,7 @@
           </div>
         </div>
       </div>
-      <div class="city-card city-card--blurred">
+      <div class="city-card" data-category="agntcons">
         <div class="city-card__img">
           <img src="assets/event-delhi.jpg" alt="AGNT'Con Delhi">
           <div class="city-card__overlay"></div>
@@ -164,23 +172,13 @@
           </div>
         </div>
       </div>
-      <div class="city-card city-card--blurred">
+      <div class="city-card" data-category="bootcamps">
         <div class="city-card__img">
           <img src="assets/event-weekends2.jpg" alt="AI &amp; Weekends">
           <div class="city-card__overlay"></div>
           <div class="city-card__info">
             <p class="city-card__name">AI &amp; Weekends</p>
             <p class="city-card__date">February 2025 - Bangalore</p>
-          </div>
-        </div>
-      </div>
-      <div class="city-card city-card--blurred">
-        <div class="city-card__img">
-          <img src="assets/event-mumbai.jpg" alt="AGNT'Con Mumbai">
-          <div class="city-card__overlay"></div>
-          <div class="city-card__info">
-            <p class="city-card__name">AGNT'Con</p>
-            <p class="city-card__date">March 2025 - Mumbai</p>
           </div>
         </div>
       </div>
