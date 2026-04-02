@@ -97,19 +97,19 @@ body {
 .hero {
   position: relative;
   width: 100%;
-  min-height: 100dvh;
+  height: 100dvh;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  background: var(--bg);
 }
 
 .hero__bg {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center bottom;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1440px;
+  max-width: none;
+  height: auto;
   z-index: 0;
 }
 
@@ -118,17 +118,18 @@ body {
   z-index: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 30px;
-  padding: 80px 40px 40px;
-  text-align: center;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 80px 60px 0;
 }
 
 .hero__text {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 13px;
+  align-items: flex-start;
+  gap: 16px;
 }
 
 .hero__title {
@@ -137,6 +138,7 @@ body {
   letter-spacing: -3.5px;
   line-height: 1;
   color: var(--black);
+  max-width: 502px;
 }
 
 .hero__subtitle {
@@ -156,7 +158,7 @@ body {
 .hero__presented {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 20px;
 }
 
@@ -267,6 +269,7 @@ body {
   height: 28px;
   width: auto;
   object-fit: contain;
+  filter: brightness(0);
 }
 
 .hero__partners .partner--aiw {
@@ -1376,14 +1379,21 @@ body {
   }
 
   /* Hero */
+  .hero__bg {
+    width: 100%;
+    left: 0;
+    transform: none;
+  }
+
   .hero__content {
-    padding: 60px 20px 30px;
-    gap: 24px;
+    padding: 50px 20px 30px;
+    gap: 20px;
   }
 
   .hero__title {
     font-size: 36px;
     letter-spacing: -2px;
+    max-width: none;
   }
 
   .hero__subtitle {
