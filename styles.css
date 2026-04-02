@@ -1356,9 +1356,11 @@ body {
 
   /* Hero */
   .hero__bg {
-    width: 100%;
-    left: 0;
-    transform: none;
+    width: auto;
+    height: 55%;
+    left: 50%;
+    transform: translateX(-50%);
+    object-fit: cover;
   }
 
   .hero__content {
