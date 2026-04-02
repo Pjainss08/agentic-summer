@@ -1454,8 +1454,14 @@ body {
 
   .cities__tabs {
     gap: 6px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     padding: 0 20px;
+  }
+
+  .cities__tab {
+    padding: 0 12px;
+    font-size: 13px;
+    white-space: nowrap;
   }
 
   .cities__grid {
