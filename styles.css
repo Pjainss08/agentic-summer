@@ -99,7 +99,7 @@ body {
   width: 100%;
   height: 100dvh;
   overflow: hidden;
-  background: var(--bg);
+  background: #ffffff;
 }
 
 .hero__bg {
@@ -1356,11 +1356,12 @@ body {
 
   /* Hero */
   .hero__bg {
-    width: auto;
-    height: 55%;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 100%;
+    height: 50%;
+    left: 0;
+    transform: none;
     object-fit: cover;
+    object-position: center top;
   }
 
   .hero__content {
