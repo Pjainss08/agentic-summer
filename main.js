@@ -3,29 +3,32 @@
 // ═══════════════════════════════════════════
 
 // ── Cities Tabs — Filter by category ──
-(function () {
-  'use strict';
-
+document.addEventListener('DOMContentLoaded', function () {
   var tabs = document.querySelectorAll('.cities__tab');
-  var cards = document.querySelectorAll('#citiesGrid .city-card');
-  if (!tabs.length) return;
+  var grid = document.getElementById('citiesGrid');
+  if (!tabs.length || !grid) return;
+
+  var cards = grid.querySelectorAll('.city-card');
 
   tabs.forEach(function (tab) {
-    tab.addEventListener('click', function () {
+    tab.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
       tabs.forEach(function (t) { t.classList.remove('cities__tab--active'); });
       tab.classList.add('cities__tab--active');
 
       var filter = tab.getAttribute('data-tab');
       cards.forEach(function (card) {
         if (filter === 'all' || card.getAttribute('data-category') === filter) {
-          card.classList.remove('city-card--hidden');
+          card.style.display = '';
         } else {
-          card.classList.add('city-card--hidden');
+          card.style.display = 'none';
         }
       });
     });
   });
-})();
+});
 
 
 // ── Reveal Lines — Scroll-triggered line-by-line ──
