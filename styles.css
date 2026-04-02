@@ -803,8 +803,8 @@ body {
 }
 
 .marquee__track .marquee__blurred {
-  filter: grayscale(1) brightness(0.3) blur(5px);
-  opacity: 0.25;
+  filter: grayscale(1) brightness(0.15) blur(7px);
+  opacity: 0.35;
 }
 
 @keyframes marquee-scroll {
