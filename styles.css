@@ -111,6 +111,18 @@ body {
   z-index: 0;
 }
 
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to top, #ffffff, transparent);
+  z-index: 1;
+  pointer-events: none;
+}
+
 .hero__content {
   position: relative;
   z-index: 1;
