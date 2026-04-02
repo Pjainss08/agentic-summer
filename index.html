@@ -163,6 +163,22 @@
         </div>
       </div>
     </div>
+    <script>
+      (function () {
+        var tabs = document.querySelectorAll('.cities__tab');
+        var cards = document.querySelectorAll('#citiesGrid .city-card');
+        tabs.forEach(function (tab) {
+          tab.addEventListener('click', function () {
+            tabs.forEach(function (t) { t.classList.remove('cities__tab--active'); });
+            tab.classList.add('cities__tab--active');
+            var f = tab.getAttribute('data-tab');
+            cards.forEach(function (c) {
+              c.style.display = (f === 'all' || c.getAttribute('data-category') === f) ? '' : 'none';
+            });
+          });
+        });
+      })();
+    </script>
   </section>
 
   <!-- FAQ -->
