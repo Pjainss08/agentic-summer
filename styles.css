@@ -10,6 +10,7 @@
 }
 
 :root {
+  --bg: #F5F5F5;
   --white: #ffffff;
   --black: #000000;
   --white-60: rgba(255, 255, 255, 0.6);
@@ -32,7 +33,7 @@ html {
 
 body {
   font-family: var(--font-primary);
-  background: var(--white);
+  background: var(--bg);
   color: var(--black);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -43,7 +44,7 @@ body {
 .main-content {
   position: relative;
   z-index: 1;
-  background: var(--white);
+  background: var(--bg);
 }
 
 
@@ -844,8 +845,8 @@ body {
 
 .cities__tab {
   height: 36px;
-  padding: 0 18px;
-  border-radius: 100px;
+  padding: 0 16px;
+  border-radius: 13px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   background: transparent;
   font-family: var(--font-primary);
@@ -952,20 +953,21 @@ body {
 }
 
 
-.city-card__register {
+.city-card__register,
+.city-card__hover-overlay .luma-checkout--button {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 38px;
   padding: 0 20px;
-  border-radius: var(--radius-md);
-  border: none;
-  background: var(--white);
+  border-radius: 12px !important;
+  border: none !important;
+  background: var(--black) !important;
   font-family: var(--font-primary);
   font-size: 15px;
   font-weight: 500;
   letter-spacing: -0.5px;
-  color: var(--black);
+  color: var(--white) !important;
   text-decoration: none;
   cursor: pointer;
 }
