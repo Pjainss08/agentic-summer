@@ -108,7 +108,7 @@
   <section class="cities" id="cities">
     <h2 class="cities__heading">Across India. All summer.</h2>
     <div class="cities__carousel" id="citiesCarousel">
-      <div class="city-card">
+      <div class="city-card city-card--active">
         <div class="city-card__img">
           <img src="assets/event-weekends2.jpg" alt="AI &amp; Weekends">
           <div class="city-card__overlay"></div>
@@ -116,11 +116,15 @@
             <p class="city-card__name">AI &amp; Weekends</p>
             <p class="city-card__date">February 2025 - Bangalore</p>
           </div>
-          <div class="city-card__hover-overlay"><a class="city-card__register" href="#">Register</a></div>
+          <div class="city-card__hover-overlay">
+            <a href="https://luma.com/event/evt-aXxPATTbEDDlwBa" class="luma-checkout--button city-card__register" data-luma-action="checkout" data-luma-event-id="evt-aXxPATTbEDDlwBa">Register</a>
+          </div>
         </div>
-        <div class="city-card__mobile-register"><a href="#">Register</a></div>
+        <div class="city-card__mobile-register">
+          <a href="https://luma.com/event/evt-aXxPATTbEDDlwBa" class="luma-checkout--button" data-luma-action="checkout" data-luma-event-id="evt-aXxPATTbEDDlwBa">Register</a>
+        </div>
       </div>
-      <div class="city-card">
+      <div class="city-card city-card--blurred">
         <div class="city-card__img">
           <img src="assets/event-mumbai.jpg" alt="AGNT'Con Mumbai">
           <div class="city-card__overlay"></div>
@@ -128,11 +132,9 @@
             <p class="city-card__name">AGNT'Con</p>
             <p class="city-card__date">March 2025 - Mumbai</p>
           </div>
-          <div class="city-card__hover-overlay"><a class="city-card__register" href="#">Register</a></div>
         </div>
-        <div class="city-card__mobile-register"><a href="#">Register</a></div>
       </div>
-      <div class="city-card">
+      <div class="city-card city-card--blurred">
         <div class="city-card__img">
           <img src="assets/event-delhi.jpg" alt="AGNT'Con Delhi">
           <div class="city-card__overlay"></div>
@@ -140,11 +142,9 @@
             <p class="city-card__name">AGNT'Con</p>
             <p class="city-card__date">March 2025 - Delhi</p>
           </div>
-          <div class="city-card__hover-overlay"><a class="city-card__register" href="#">Register</a></div>
         </div>
-        <div class="city-card__mobile-register"><a href="#">Register</a></div>
       </div>
-      <div class="city-card">
+      <div class="city-card city-card--blurred">
         <div class="city-card__img">
           <img src="assets/event-weekends1.jpg" alt="AI &amp; Weekends">
           <div class="city-card__overlay"></div>
@@ -152,11 +152,9 @@
             <p class="city-card__name">AI &amp; Weekends</p>
             <p class="city-card__date">February 2025 - Bangalore</p>
           </div>
-          <div class="city-card__hover-overlay"><a class="city-card__register" href="#">Register</a></div>
         </div>
-        <div class="city-card__mobile-register"><a href="#">Register</a></div>
       </div>
-      <div class="city-card">
+      <div class="city-card city-card--blurred">
         <div class="city-card__img">
           <img src="assets/event-delhi.jpg" alt="AGNT'Con Delhi">
           <div class="city-card__overlay"></div>
@@ -164,11 +162,9 @@
             <p class="city-card__name">AGNT'Con</p>
             <p class="city-card__date">March 2025 - Delhi</p>
           </div>
-          <div class="city-card__hover-overlay"><a class="city-card__register" href="#">Register</a></div>
         </div>
-        <div class="city-card__mobile-register"><a href="#">Register</a></div>
       </div>
-      <div class="city-card">
+      <div class="city-card city-card--blurred">
         <div class="city-card__img">
           <img src="assets/event-weekends2.jpg" alt="AI &amp; Weekends">
           <div class="city-card__overlay"></div>
@@ -176,11 +172,9 @@
             <p class="city-card__name">AI &amp; Weekends</p>
             <p class="city-card__date">February 2025 - Bangalore</p>
           </div>
-          <div class="city-card__hover-overlay"><a class="city-card__register" href="#">Register</a></div>
         </div>
-        <div class="city-card__mobile-register"><a href="#">Register</a></div>
       </div>
-      <div class="city-card">
+      <div class="city-card city-card--blurred">
         <div class="city-card__img">
           <img src="assets/event-mumbai.jpg" alt="AGNT'Con Mumbai">
           <div class="city-card__overlay"></div>
@@ -188,9 +182,7 @@
             <p class="city-card__name">AGNT'Con</p>
             <p class="city-card__date">March 2025 - Mumbai</p>
           </div>
-          <div class="city-card__hover-overlay"><a class="city-card__register" href="#">Register</a></div>
         </div>
-        <div class="city-card__mobile-register"><a href="#">Register</a></div>
       </div>
     </div>
   </section>
@@ -293,6 +285,7 @@
     <p class="footer__presented">Presented by <a href="https://x.com/innercircle_so" target="_blank" rel="noopener">Inner Circle</a> x <a href="https://x.com/aiweekendsxyz" target="_blank" rel="noopener">AI Weekends</a></p>
   </footer>
 
+  <script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js"></script>
   <script src="main.js"></script>
   <script src="http://localhost:4747/script.js"></script>
 </body>

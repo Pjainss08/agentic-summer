@@ -905,13 +905,20 @@ body {
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
   opacity: 0;
-  transition: opacity 0.2s ease-out;
   z-index: 2;
   border-radius: inherit;
 }
 
-.city-card:hover .city-card__hover-overlay {
+.city-card--active .city-card__hover-overlay {
   opacity: 1;
+}
+
+.city-card--blurred .city-card__img img {
+  filter: blur(4px);
+}
+
+.city-card--blurred .city-card__img {
+  opacity: 0.5;
 }
 
 .city-card__register {
