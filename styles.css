@@ -1612,7 +1612,7 @@ body {
   }
 
   .footer__bg img {
-    content: url('assets/footer image.png');
+    content: url('assets/footer-image.png');
     object-position: center top;
   }
 
