@@ -121,6 +121,13 @@ body {
   background: linear-gradient(to bottom, #ffffff, transparent);
   z-index: 1;
   pointer-events: none;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .hero::after {
+    display: block;
+  }
 }
 
 .hero__content {
