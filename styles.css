@@ -114,10 +114,10 @@ body {
 .hero::after {
   content: '';
   position: absolute;
-  bottom: 50%;
+  top: 50%;
   left: 0;
   right: 0;
-  height: 120px;
+  height: 100px;
   background: linear-gradient(to bottom, #ffffff, transparent);
   z-index: 1;
   pointer-events: none;
