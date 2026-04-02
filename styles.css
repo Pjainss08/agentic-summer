@@ -97,9 +97,10 @@ body {
 .hero {
   position: relative;
   width: 100%;
-  height: 100dvh;
-  min-height: 700px;
+  min-height: 100dvh;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .hero__bg {
@@ -108,29 +109,26 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.hero__gradient {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 456px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 29.56%, transparent);
+  object-position: center bottom;
+  z-index: 0;
 }
 
 .hero__content {
-  position: absolute;
-  bottom: 60px;
-  left: 59px;
-  right: 59px;
+  position: relative;
+  z-index: 1;
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 80px 40px 40px;
+  text-align: center;
 }
 
-.hero__left {
-  max-width: 742px;
+.hero__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 13px;
 }
 
 .hero__title {
@@ -138,24 +136,36 @@ body {
   font-weight: 500;
   letter-spacing: -3.5px;
   line-height: 1;
-  color: var(--white);
-  max-width: 514px;
+  color: var(--black);
 }
 
 .hero__subtitle {
-  margin-top: 16px;
   font-size: 24px;
   font-weight: 400;
   letter-spacing: -1.2px;
   line-height: 1.2;
-  color: var(--white);
+  color: var(--black);
   max-width: 593px;
 }
 
 .hero__buttons {
-  margin-top: 40px;
   display: flex;
   gap: 16px;
+}
+
+.hero__presented {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.hero__presented-label {
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 
@@ -165,23 +175,15 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 18px;
+  padding: 0 16px;
+  width: 140px;
   height: 45px;
-  border-radius: var(--radius-md);
-  background: var(--white);
+  border-radius: 14px;
+  background: var(--black);
   overflow: hidden;
   border: none;
   cursor: pointer;
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12);
-}
-
-.btn-join::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  box-shadow: inset 0 -2px 0 0 rgba(255, 255, 255, 0.5);
-  pointer-events: none;
 }
 
 .btn-join span {
@@ -190,7 +192,7 @@ body {
   font-size: 20px;
   font-weight: 500;
   letter-spacing: -1px;
-  color: var(--black);
+  color: var(--white);
   line-height: 1.2;
 }
 
@@ -245,21 +247,6 @@ body {
 
 
 /* ── Partners ── */
-.hero__right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 40px;
-}
-
-.hero__supported {
-  font-size: 20px;
-  font-weight: 400;
-  letter-spacing: -1px;
-  color: var(--white-60);
-  line-height: 1.2;
-}
-
 .hero__partners {
   display: flex;
   align-items: center;
@@ -1268,7 +1255,7 @@ body {
 
 .footer__presented {
   position: absolute;
-  top: 50%;
+  top: 43%;
   left: 0;
   right: 0;
   transform: translateY(-50%);
@@ -1310,24 +1297,8 @@ body {
    Responsive — Tablet (≤1024px)
    ═══════════════════════════════════════════ */
 @media (max-width: 1024px) {
-  .hero__content {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 40px;
-  }
-
-  .hero__right {
-    align-items: flex-start;
-  }
-
-  .hero__partners {
-    width: auto;
-    justify-content: flex-start;
-  }
-
   .hero__title {
     font-size: 52px;
-    max-width: none;
   }
 
   .hero__subtitle {
@@ -1405,70 +1376,38 @@ body {
   }
 
   /* Hero */
-  .hero {
-    min-height: 100dvh;
-  }
-
-  .hero__gradient {
-    height: 70%;
-  }
-
   .hero__content {
-    bottom: 40px;
-    left: 20px;
-    right: 20px;
-    gap: 30px;
+    padding: 60px 20px 30px;
+    gap: 24px;
   }
 
   .hero__title {
-    font-size: 42px;
+    font-size: 36px;
     letter-spacing: -2px;
-    max-width: 280px;
   }
 
   .hero__subtitle {
     font-size: 16px;
-    margin-top: 12px;
     letter-spacing: -0.5px;
     max-width: none;
   }
 
-  .hero__buttons {
-    margin-top: 24px;
+  .hero__presented-label {
+    font-size: 16px;
   }
 
   .btn-join {
-    padding: 0 20px;
+    width: 120px;
     height: 40px;
-    white-space: nowrap;
   }
 
   .btn-join span {
     font-size: 16px;
   }
 
-  .btn-explore {
-    height: 40px;
-    font-size: 16px;
-    padding: 8px 16px;
-  }
-
-  .hero__right {
-    gap: 16px;
-  }
-
-  .hero__supported {
-    font-size: 14px;
-  }
-
   .hero__partners {
-    gap: 12px 16px;
+    gap: 12px;
   }
-
-  .partner--logo1   { width: 70px; height: 18px; }
-  .partner--antler  { width: 85px; height: 20px; }
-  .partner--zerion  { width: 72px; height: 18px; }
-  .partner--coinbase { width: 85px; height: 16px; }
 
   /* Mission */
   .mission {
@@ -1649,7 +1588,7 @@ body {
 
   .footer__presented {
     top: auto;
-    bottom: 60px;
+    bottom: 320px;
     font-size: 16px;
     color: var(--black);
     letter-spacing: -0.5px;
