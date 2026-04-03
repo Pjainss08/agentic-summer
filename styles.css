@@ -781,9 +781,9 @@ body {
 }
 
 .friends__title {
-  font-size: 70px;
+  font-size: 50px;
   font-weight: 500;
-  letter-spacing: -3.5px;
+  letter-spacing: -2.5px;
   line-height: 1;
   color: var(--black);
   margin: 0 0 50px;
