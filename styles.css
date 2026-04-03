@@ -775,54 +775,44 @@ body {
 
 
 /* ── Logo Marquee ── */
-.marquee {
+.friends {
   padding: 80px 0;
-  overflow: hidden;
+  text-align: center;
 }
 
-.marquee__track {
+.friends__title {
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  color: rgba(0, 0, 0, 0.5);
+  margin-bottom: 30px;
+}
+
+.friends__logos {
   display: flex;
   align-items: center;
-  gap: 60px;
-  width: max-content;
-  animation: marquee-scroll 20s linear infinite;
+  justify-content: center;
+  gap: 50px;
 }
 
-.marquee__track img[src*="elevenlabs"] {
-  height: 27px;
-}
-
-.marquee__track img {
-  height: 32px;
+.friends__logos img {
+  height: 30px;
   width: auto;
-  max-height: 32px;
   object-fit: contain;
-  opacity: 0.5;
-  filter: grayscale(1) brightness(0.3);
-  flex-shrink: 0;
-}
-
-.marquee__track .marquee__blurred {
-  filter: grayscale(1) brightness(0.15) blur(7px);
-  opacity: 0.35;
-}
-
-@keyframes marquee-scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  opacity: 0.7;
+  filter: grayscale(1);
 }
 
 @media (max-width: 768px) {
-  .marquee {
-    padding: 50px 0;
+  .friends {
+    padding: 50px 20px;
   }
 
-  .marquee__track {
-    gap: 40px;
-    animation-duration: 15s;
+  .friends__logos {
+    gap: 30px;
   }
 
-  .marquee__track img {
+  .friends__logos img {
     height: 22px;
   }
 }
