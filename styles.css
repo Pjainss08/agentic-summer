@@ -144,8 +144,8 @@ body {
 
 .hero__submit {
   position: absolute;
-  top: 30px;
-  right: 30px;
+  top: 40px;
+  right: 40px;
   z-index: 3;
   display: inline-flex;
   align-items: center;
@@ -1414,8 +1414,8 @@ body {
   }
 
   .hero__submit {
-    top: 16px;
-    right: 16px;
+    top: 20px;
+    right: 20px;
     height: 36px;
     padding: 0 14px;
     font-size: 14px;
